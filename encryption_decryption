@@ -1,0 +1,31 @@
+<?php
+
+class Encryption_decryption extends CI_Controller {
+
+public function __construct() {
+parent:: __construct();
+$this->load->helper('form');
+$this->load->library('encrypt');
+}
+
+public function index() {
+$this->load->view('show_form');
+}
+
+public function encode() 
+{
+	$key = $this->input->post('key');
+	$data['encrypt'] = $this->encrypt->encode($key);
+	$this->load->view('show_form', $data);
+}
+
+public function decoder() {
+
+$encrypt_key = $this->input->post('encrypt_key');
+$data['decrypt_value'] = $this->encrypt->decode($encrypt_key);
+$this->load->view('show_form', $data);
+}
+
+}
+
+?>
