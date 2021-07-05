@@ -1,0 +1,11 @@
+public function login_save()
+{
+$user = $this->input->post('username');
+$email = $this->input->post('email');
+
+$data = array('username' => $user,
+               'email'  => $email,
+               'password' =>md5($this->input->post('password'));
+       $this->db->insert('user_form',$data);// user_form is table name
+       
+}
